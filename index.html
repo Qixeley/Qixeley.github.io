@@ -1,84 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Animal Company Modding Tool</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Company Modding</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="dark">
-  <header>
-    <h1>🐾 Animal Company Modding</h1>
-    <label class="switch">
-      <input type="checkbox" id="modeToggle" />
+<body>
+  <!-- Theme switcher -->
+  <div id="themeSwitch" class="theme-switch">
+    <label for="theme-toggle" class="switch">
+      <input type="checkbox" id="theme-toggle" />
       <span class="slider"></span>
     </label>
-  </header>
+    <span>Light Mode / Dark Mode</span>
+  </div>
 
-  <main>
-    <section class="card">
-      <h2>Item Settings</h2>
+  <!-- Search Bar with Auto-Complete -->
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="🔎 Search items..." />
+    <ul id="searchSuggestions" class="suggestions-list"></ul>
+  </div>
 
-      <input type="text" id="searchInput" placeholder="🔎 Search items..." />
+  <!-- Item selection area -->
+  <div class="item-selection">
+    <label for="itemSelector">Choose an item:</label>
+    <select id="itemSelector">
+      <!-- Options will be dynamically added here -->
+    </select>
+  </div>
 
-      <label>Item:
-        <select id="itemSelect">
-          <option value="item1">Item 1</option>
-          <option value="item2">Item 2</option>
-          <option value="item3">Item 3</option>
-        </select>
-      </label>
-
-      <div class="slider-group">
-        <label>Hue:
-          <input type="range" id="hueSlider" min="0" max="210" value="0"/>
-          <input type="number" id="hueValue" value="0"/>
-          <label><input type="checkbox" id="randomHue"/> Random</label>
-        </label>
-      </div>
-
-      <div class="slider-group">
-        <label>Saturation:
-          <input type="range" id="saturationSlider" min="0" max="120" value="0"/>
-          <input type="number" id="saturationValue" value="0"/>
-          <label><input type="checkbox" id="randomSaturation"/> Random</label>
-        </label>
-      </div>
-
-      <div class="slider-group">
-        <label>Size:
-          <input type="range" id="sizeSlider" min="-128" max="127" value="0"/>
-          <input type="number" id="sizeValue" value="0"/>
-          <label><input type="checkbox" id="randomSize"/> Random</label>
-        </label>
-      </div>
-
-      <label>Count:
-        <input type="number" id="count" value="1" min="1"/>
-      </label>
-
-      <label>Container:
-        <select id="containerSelect">
-          <option value="root">Root (No Container)</option>
-          <option value="container1">Container 1</option>
-        </select>
-      </label>
-
-      <button id="addItem">➕ Add Item</button>
-    </section>
-
-    <section class="card">
-      <h2>Inventory Items</h2>
-      <ul id="inventoryItems"></ul>
-
-      <input type="text" id="fileTitle" placeholder="Enter file title" />
-      <div id="jsonSizeIndicator">JSON Size: 0 KB</div>
-
-      <button id="importJson">📂 Import JSON</button>
-      <button id="downloadJson">💾 Download JSON</button>
-    </section>
-  </main>
+  <!-- More UI elements (sliders, text inputs) -->
+  <!-- Your existing controls for hue, saturation, size scale, etc., can remain here -->
 
   <script src="script.js"></script>
 </body>
 </html>
+
