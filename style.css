@@ -1,52 +1,59 @@
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #2f2f2f;
-    color: #fff;
-    margin: 0;
-    padding: 0;
+// Sliders update
+document.getElementById("hueSlider").addEventListener("input", updateHue);
+document.getElementById("saturationSlider").addEventListener("input", updateSaturation);
+document.getElementById("sizeSlider").addEventListener("input", updateSize);
+
+function updateHue() {
+  let hueValue = document.getElementById("hueSlider").value;
+  document.getElementById("hueValue").value = hueValue;
 }
 
-h1, h2 {
-    text-align: center;
+function updateSaturation() {
+  let saturationValue = document.getElementById("saturationSlider").value;
+  document.getElementById("saturationValue").value = saturationValue;
 }
 
-input[type="range"] {
-    width: 100%;
+function updateSize() {
+  let sizeValue = document.getElementById("sizeSlider").value;
+  document.getElementById("sizeValue").value = sizeValue;
 }
 
-input[type="number"] {
-    width: 60px;
-}
+// Add item to inventory
+document.getElementById("addItem").addEventListener("click", function() {
+  let item = document.getElementById("itemSelect").value;
+  let hue = document.getElementById("hueValue").value;
+  let saturation = document.getElementById("saturationValue").value;
+  let size = document.getElementById("sizeValue").value;
+  let count = document.getElementById("count").value;
+  let container = document.getElementById("containerSelect").value;
 
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-}
+  let itemHTML = `
+    <li>
+      ${item} (Hue: ${hue}, Saturation: ${saturation}, Size: ${size}, Count: ${count}, Container: ${container})
+    </li>
+  `;
+  document.getElementById("inventoryItems").innerHTML += itemHTML;
 
-button:hover {
-    background-color: #45a049;
-}
+  // Update JSON size (simulated)
+  document.getElementById("jsonSizeIndicator").innerText = `JSON Size: ${document.getElementById("inventoryItems").children.length * 10} KB`;
+});
 
-#inventoryItems {
-    list-style-type: none;
-    padding: 0;
-}
+// Download JSON
+document.getElementById("downloadJson").addEventListener("click", function() {
+  let items = [];
+  document.querySelectorAll("#inventoryItems li").forEach(function(item) {
+    items.push(item.innerText);
+  });
 
-#inventoryItems li {
-    padding: 5px 0;
-}
+  let jsonContent = JSON.stringify(items);
+  let blob = new Blob([jsonContent], { type: "application/json" });
+  let link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "inventory.json";
+  link.click();
+});
 
-.search-bar input, .item-selection select {
-    width: 100%;
-    margin-bottom: 10px;
-}
-
-.json-section {
-    text-align: center;
-}
+// Light/Dark Mode toggle
+document.getElementById("modeToggle").addEventListener("change", function() {
+  document.body.classList.toggle("dark");
+});
