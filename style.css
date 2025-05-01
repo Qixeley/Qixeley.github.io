@@ -1,0 +1,52 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #2f2f2f;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+input[type="range"] {
+    width: 100%;
+}
+
+input[type="number"] {
+    width: 60px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#inventoryItems {
+    list-style-type: none;
+    padding: 0;
+}
+
+#inventoryItems li {
+    padding: 5px 0;
+}
+
+.search-bar input, .item-selection select {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.json-section {
+    text-align: center;
+}
